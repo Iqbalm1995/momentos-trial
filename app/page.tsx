@@ -1,113 +1,240 @@
-import Image from "next/image";
+// app/page.tsx
+"use client";
+import {
+  Box,
+  Button,
+  Center,
+  Flex,
+  Grid,
+  GridItem,
+  Heading,
+  HStack,
+  Spacer,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import Marquee from "react-fast-marquee";
+import ReactAudioPlayer from "react-audio-player";
+import { setTimeout } from "timers";
 
-export default function Home() {
+export default function Page() {
+  // const [PlayToggle, setPlayToggle] = useState(false);
+  let audio = new Audio("./bg-sound.mp3");
+  const startPlay = () => {
+    audio.play();
+  };
+
+  const stopPlay = () => {
+    audio.pause();
+  };
+
+  useEffect(() => {
+    // setTimeout(() => {
+    //   startPlay();
+    // }, 3000);
+  }, []);
+
+  const [Step1Display, setStep1Display] = useState<"none" | "block">("block");
+  const [Step2Display, setStep2Display] = useState<"none" | "grid">("none");
+
+  const navToStep1 = () => {
+    console.log(Step1Display);
+    console.log(Step2Display);
+    setStep1Display("block");
+    setStep2Display("none");
+  };
+
+  const navToStep2 = () => {
+    console.log(Step1Display);
+    console.log(Step2Display);
+    setStep1Display("none");
+    setStep2Display("grid");
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <Flex bg={"#FFF6F2"} h={"100vh"} w={"full"} p={{ base: 0, md: 5 }}>
+      <Flex
+        w={"full"}
+        h={"full"}
+        rounded={{ base: "node", md: "2xl" }}
+        backgroundPosition="center"
+        backgroundRepeat="no-repeat"
+        backgroundSize="cover"
+        // backgroundImage={`url(./bg1.png)`}
+        pos={"relative"}
+        zIndex={0}
+      >
+        <Flex h={"full"} w={"full"} rounded={{ base: "node", md: "2xl" }}>
+          <VStack
+            rounded={{ base: "node", md: "2xl" }}
+            spacing={2}
+            overflowY="auto"
+            // h={"full"}
+            // w={"full"}
+            css={{
+              "&::-webkit-scrollbar": {
+                display: "none",
+              },
+              "-ms-overflow-style": "none", // IE and Edge
+              "scrollbar-width": "none", // Firefox
+            }}
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+            <HStack h={"full"} w={"full"} zIndex={0}>
+              <Marquee speed={15} direction={"left"}>
+                <Box h={"200px"} mx={1} bg={"#00FFF3"} w={"400px"}></Box>
+                <Box h={"200px"} mx={1} bg={"#00FFF3"} w={"400px"}></Box>
+                <Box h={"200px"} mx={1} bg={"#00FFF3"} w={"400px"}></Box>
+                <Box h={"200px"} mx={1} bg={"#00FFF3"} w={"400px"}></Box>
+                {/* <Box h={"200px"} bg={"#00FFF3"} w={"400px"}></Box> */}
+              </Marquee>
+            </HStack>
+            <HStack h={"full"} w={"full"} zIndex={0}>
+              <Marquee speed={15} direction={"right"}>
+                <Box h={"400px"} mx={1} bg={"#00D1FF"} w={"280px"}></Box>
+                <Box h={"400px"} mx={1} bg={"#00D1FF"} w={"280px"}></Box>
+                <Box h={"400px"} mx={1} bg={"#00D1FF"} w={"280px"}></Box>
+                <Box h={"400px"} mx={1} bg={"#00D1FF"} w={"280px"}></Box>
+                <Box h={"400px"} mx={1} bg={"#00D1FF"} w={"280px"}></Box>
+                <Box h={"400px"} mx={1} bg={"#00D1FF"} w={"280px"}></Box>
+              </Marquee>
+            </HStack>
+            <HStack h={"full"} w={"full"} zIndex={0}>
+              <Marquee speed={15} direction={"left"}>
+                <Box h={"200px"} mx={1} bg={"#0087FF"} w={"400px"}></Box>
+                <Box h={"200px"} mx={1} bg={"#0087FF"} w={"400px"}></Box>
+                <Box h={"200px"} mx={1} bg={"#0087FF"} w={"400px"}></Box>
+                <Box h={"200px"} mx={1} bg={"#0087FF"} w={"400px"}></Box>
+                <Box h={"200px"} mx={1} bg={"#0087FF"} w={"400px"}></Box>
+              </Marquee>
+            </HStack>
+            <HStack h={"full"} w={"full"} zIndex={0}>
+              <Marquee speed={15} direction={"right"}>
+                <Box h={"200px"} mx={1} bg={"#0027FF"} w={"400px"}></Box>
+                <Box h={"200px"} mx={1} bg={"#0027FF"} w={"400px"}></Box>
+                <Box h={"200px"} mx={1} bg={"#0027FF"} w={"400px"}></Box>
+                <Box h={"200px"} mx={1} bg={"#0027FF"} w={"400px"}></Box>
+              </Marquee>
+            </HStack>
+          </VStack>
+        </Flex>
+        <Box
+          pos={"absolute"}
+          top="0"
+          left="0"
+          w={"full"}
+          h={"full"}
+          rounded={{ base: "node", md: "2xl" }}
+          // bgGradient="linear(to-b, rgba(255, 221, 207, 0) 0%, rgba(255, 160, 122, 0.5) 100%)"
+          bgGradient="linear(to-b, rgba(108,176,242, 0.3) 0%, rgba(108,176,242, 1) 100%)"
+          // bg={"red"}
         >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+          {/* <Button onClick={() => startPlay()}>Play</Button>
+          <Button onClick={() => stopPlay()}>Stop</Button> */}
+          <Flex
+            w={"full"}
+            h={"full"}
+            justifyContent={"center"}
+            alignItems={"center"}
+          >
+            {/* STEP 1 */}
+            <Box display={Step1Display}>
+              <VStack spacing={5} px={{ base: 2, md: 10 }}>
+                <Heading
+                  as="h2"
+                  size="2xl"
+                  // bgGradient="linear(to-r, #00D8FF, #0078FF)"
+                  // bgGradient="linear(to-b, gray.50, gray.300)"
+                  color={"white"}
+                  textAlign={"center"}
+                  // bgClip="text"
+                >
+                  (2xl) In love with React & Next
+                </Heading>
+                <Button
+                  colorScheme={"blue"}
+                  variant={"solid"}
+                  size={"lg"}
+                  px={10}
+                  rounded={"3xl"}
+                  onClick={() => navToStep2()}
+                >
+                  Mulai
+                </Button>
+              </VStack>
+            </Box>
+            {/* STEP 2 */}
+            <Grid
+              templateColumns="repeat(12, 1fr)"
+              gap={2}
+              w={"full"}
+              display={Step2Display}
+            >
+              <GridItem
+                colStart={{ base: 2, md: 4 }}
+                colEnd={{ base: 12, md: 10 }}
+              >
+                <Box
+                  w={"full"}
+                  // w={"600px"}
+                  h={"600px"}
+                  bg={"red"}
+                  rounded={"3xl"}
+                  bgGradient={"linear(to-b, #275A8B, #0C365E)"}
+                  p={8}
+                  overflowY={"auto"}
+                >
+                  <VStack spacing={5} w={"full"}>
+                    <Button
+                      colorScheme={"blue"}
+                      variant={"solid"}
+                      size={"md"}
+                      px={10}
+                      rounded={"3xl"}
+                      onClick={() => navToStep1()}
+                    >
+                      Kembali
+                    </Button>
+                    <Heading
+                      as="h2"
+                      size="xl"
+                      // bgGradient="linear(to-r, #00D8FF, #0078FF)"
+                      // bgGradient="linear(to-b, gray.50, gray.300)"
+                      color={"white"}
+                      textAlign={"center"}
+                      // bgClip="text"
+                    >
+                      (2xl) In love with React & Next
+                    </Heading>
+                    <Box width={"full"}>
+                      <Flex width={"560"} height={"315"} bg={"black"}></Flex>
+                      {/* <iframe
+                        width="560"
+                        height="315"
+                        src="https://www.youtube.com/embed/feMDhjDAlzU?si=ynka-WmOZGw0z3EH"
+                        title="YouTube video player"
+                        // frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        // referrerpolicy="strict-origin-when-cross-origin"
+                        // allowfullscreen
+                      ></iframe> */}
+                    </Box>
+                    <Box w={"full"} p={5}>
+                      <Text color={"white"}>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Itaque cum deleniti et incidunt commodi
+                        voluptatibus! Repudiandae sit harum molestiae tempore
+                        atque, facere amet dolorum excepturi, commodi dolorem
+                        ipsa asperiores deserunt.
+                      </Text>
+                    </Box>
+                  </VStack>
+                </Box>
+              </GridItem>
+            </Grid>
+          </Flex>
+        </Box>
+      </Flex>
+    </Flex>
   );
 }
