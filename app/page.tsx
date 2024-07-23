@@ -20,13 +20,13 @@ import { setTimeout } from "timers";
 
 export default function Page() {
   // const [PlayToggle, setPlayToggle] = useState(false);
-  let audio = new Audio("./bg-sound.mp3");
+  // let audio = new Audio("./bg-sound.mp3");
   const startPlay = () => {
-    audio.play();
+    // audio.play();
   };
 
   const stopPlay = () => {
-    audio.pause();
+    // audio.pause();
   };
 
   useEffect(() => {
@@ -86,11 +86,13 @@ export default function Page() {
                 <Box h={"200px"} mx={1} bg={"#00FFF3"} w={"400px"}></Box>
                 <Box h={"200px"} mx={1} bg={"#00FFF3"} w={"400px"}></Box>
                 <Box h={"200px"} mx={1} bg={"#00FFF3"} w={"400px"}></Box>
+                <Box h={"200px"} mx={1} bg={"#00FFF3"} w={"400px"}></Box>
                 {/* <Box h={"200px"} bg={"#00FFF3"} w={"400px"}></Box> */}
               </Marquee>
             </HStack>
             <HStack h={"full"} w={"full"} zIndex={0}>
               <Marquee speed={15} direction={"right"}>
+                <Box h={"400px"} mx={1} bg={"#00D1FF"} w={"280px"}></Box>
                 <Box h={"400px"} mx={1} bg={"#00D1FF"} w={"280px"}></Box>
                 <Box h={"400px"} mx={1} bg={"#00D1FF"} w={"280px"}></Box>
                 <Box h={"400px"} mx={1} bg={"#00D1FF"} w={"280px"}></Box>
@@ -110,6 +112,7 @@ export default function Page() {
             </HStack>
             <HStack h={"full"} w={"full"} zIndex={0}>
               <Marquee speed={15} direction={"right"}>
+                <Box h={"200px"} mx={1} bg={"#0027FF"} w={"400px"}></Box>
                 <Box h={"200px"} mx={1} bg={"#0027FF"} w={"400px"}></Box>
                 <Box h={"200px"} mx={1} bg={"#0027FF"} w={"400px"}></Box>
                 <Box h={"200px"} mx={1} bg={"#0027FF"} w={"400px"}></Box>
